@@ -157,6 +157,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Always show the filename at the top of the window
+vim.opt.winbar = '%=%m %f'
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -260,7 +263,7 @@ require('lazy').setup({
     end,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
-  -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
+  --c NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
