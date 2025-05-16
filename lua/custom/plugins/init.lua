@@ -25,18 +25,27 @@ return { -- nvim v0.8.0
   },
   {
     'stevearc/oil.nvim',
-    ---@module 'oil'
-    ---@type oil.SetupOpts
-    opts = {},
-    -- Optional dependencies
+    config = function()
+      require('oil').setup {
+        show_hidden = true,
+        keymaps = {
+          ['g.'] = 'actions.toggle_hidden',
+        },
+        view_options = {
+          -- Show files and directories that start with "."
+          show_hidden = true,
+        },
+        -- Use the 'mini.icons' dependency for prettier icons
+        use_default_keymaps = true,
+      }
+    end,
     dependencies = { { 'echasnovski/mini.icons', opts = {} } },
-    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
     lazy = false,
     keys = {
       { '<leader>o', '<cmd>Oil<cr>', desc = 'Open parent directory' },
     },
   },
+  -- lazy.nvim
   {
     'folke/noice.nvim',
     event = 'VeryLazy',
@@ -119,5 +128,10 @@ return { -- nvim v0.8.0
         },
       }
     end,
+  },
+  {
+    'pmizio/typescript-tools.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+    opts = {},
   },
 }
